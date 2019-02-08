@@ -1,0 +1,75 @@
+{
+  "name": "effe-readme",
+  "description": "Generate readme from package.json",
+  "version": "0.0.0",
+  "author": "Francesco Megna",
+  "bin": {
+    "effe": "./bin/run"
+  },
+  "bugs": "https://github.com///effe-readme/issues",
+  "dependencies": {
+    "@oclif/command": "^1.5.8",
+    "@oclif/config": "^1.12.4",
+    "@oclif/plugin-help": "^2.1.6",
+    "@types/mustache": "^0.8.32",
+    "@types/package-json": "^5.0.0",
+    "emoji-random": "^0.1.2",
+    "mustache": "^3.0.1",
+    "package-json": "^6.0.0",
+    "tslib": "^1.9.3"
+  },
+  "devDependencies": {
+    "@oclif/dev-cli": "^1.21.0",
+    "@oclif/test": "^1.2.2",
+    "@oclif/tslint": "^3.1.1",
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^10.12.21",
+    "chai": "^4.2.0",
+    "globby": "^8.0.2",
+    "mocha": "^5.2.0",
+    "nyc": "^13.2.0",
+    "rimraf": "^2.6.3",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.12.1",
+    "typescript": "^3.2.2"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/bin",
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "homepage": "https://github.com///effe-readme",
+  "keywords": [
+    "oclif"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "effe",
+    "plugins": [
+      "@oclif/plugin-help"
+    ]
+  },
+  "repository": "//effe-readme",
+  "scripts": {
+    "postpack": "rimraf oclif.manifest.json",
+    "posttest": "tslint -p test -t stylish",
+    "prepack": "rimraf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "version": "oclif-dev readme && git add README.md"
+  },
+  "types": "lib/index.d.ts",
+  "effe": {
+    "twitt": "Generate readme from package.json with effe-readme cli, say goodbye to a sadly github",
+    "emoji": true,
+    "tecnhologies": true,
+    "howtocontribute": true,
+    "packagemanager": "npm"
+  }
+}
