@@ -19,6 +19,14 @@ Use {{packagemanager}} to install {{name}}.
 {{installationInstructions}}
 ```
 {{/packagemanager}}
+{{#testInstruction.length}}
+
+## How to test
+
+```javascript
+{{{testInstruction}}}
+```
+{{/testInstruction.length}}
 {{#dependencies.length}}
 
 ## Technologies
@@ -36,12 +44,11 @@ Use {{packagemanager}} to install {{name}}.
 {{author}}
 ```
 
-{{#mentionme}}
-This README.md was bootstrapped with **effe-readme**.
-{{/mentionme}}
-
+{{#licenseDescription.length}}
 # 📃 License
+
  {{licenseDescription}}
+{{/licenseDescription.length}}
 {{#howtocontribute}}
 
 # 👍 How to Contribute
@@ -51,3 +58,8 @@ This README.md was bootstrapped with **effe-readme**.
 4. Push to the branch (git push origin my-new-feature)
 5. Create new Pull Request
 {{/howtocontribute}}
+
+{{#mentionme}}
+This README.md was bootstrapped with **effe-readme**.
+{{/mentionme}}
+

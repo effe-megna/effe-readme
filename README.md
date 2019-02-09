@@ -6,7 +6,7 @@
     <img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"/>
   </a>
 
-:non-potable_water: **effe-readme** Generate readme from package.json
+:gun: **effe-readme** Generate readme from package.json
 
 ## Installation
 
@@ -14,6 +14,12 @@ Use npm to install effe-readme.
 
 ```javascript
 npm install effe-readme
+```
+
+## How to test
+
+```javascript
+nyc --extension .ts mocha --forbid-only "test/**/*.test.ts"
 ```
 
 ## Technologies
@@ -29,6 +35,7 @@ npm install effe-readme
 | mustache | 3.0.1 | Logic-less {{mustache}} templates with JavaScript |
 | package-json | 6.0.0 | Get metadata of a package from the npm registry |
 | tslib | 1.9.3 | Runtime library for TypeScript helper functions |
+| write-pkg | 3.2.0 | Write a package.json file |
 
 
 ## 🚶 Developed by
@@ -37,6 +44,7 @@ Francesco Megna
 ```
 
 # 📃 License
+
  MIT License
 
     Copyright (c) 2019 Francesco Megna
@@ -68,3 +76,4 @@ Francesco Megna
 5. Create new Pull Request
 
 This README.md was bootstrapped with **effe-readme**.
+
