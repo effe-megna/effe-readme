@@ -61,6 +61,7 @@ export default class Generate extends Command {
 
     const rendered = Mustache.render(fs.readFileSync(templatePath).toString(), {
       emoji: pjson.effe && pjson.effe.emoji ? randomEmoji : null,
+      mentionme: pjson.effe && pjson.effe.mentionme,
       name: pJson.name,
       description: pJson.description,
       author: pJson.author,

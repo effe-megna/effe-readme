@@ -36,6 +36,10 @@ Use {{packagemanager}} to install {{name}}.
 {{author}}
 ```
 
+{{#mentionme}}
+This README.md was bootstrapped with **effe-readme**.
+{{/mentionme}}
+
 # 📃 License
  {{licenseDescription}}
 {{#howtocontribute}}

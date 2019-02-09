@@ -70,6 +70,7 @@
     "emoji": true,
     "tecnhologies": true,
     "howtocontribute": true,
-    "packagemanager": "npm"
+    "packagemanager": "npm",
+    "mentionme": true
   }
 }

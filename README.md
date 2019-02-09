@@ -6,7 +6,7 @@
     <img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"/>
   </a>
 
-:arrow_backward: **effe-readme** Generate readme from package.json
+:non-potable_water: **effe-readme** Generate readme from package.json
 
 ## Installation
 
@@ -66,3 +66,5 @@ Francesco Megna
 3. Commit your changes (git commit -am 'Add some feature')
 4. Push to the branch (git push origin my-new-feature)
 5. Create new Pull Request
+
+This README.md was bootstrapped with **effe-readme**.
