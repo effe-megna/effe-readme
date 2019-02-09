@@ -34,7 +34,7 @@ Use {{packagemanager}} to install {{name}}.
 | **Tech** | **Version** | **Description** |
 | -------- | ----------- | --------------- |
 {{#dependencies}}
-| {{dependencyName}} | {{dependencyVersion}} | {{dependencyDescription}} |
+| {{{dependencyName}}} | {{{dependencyVersion}}} | {{{dependencyDescription}}} |
 {{/dependencies}}
 
 {{/dependencies.length}}
@@ -43,12 +43,6 @@ Use {{packagemanager}} to install {{name}}.
 ```
 {{author}}
 ```
-
-{{#licenseDescription.length}}
-# 📃 License
-
- {{licenseDescription}}
-{{/licenseDescription.length}}
 {{#howtocontribute}}
 
 # 👍 How to Contribute
@@ -62,4 +56,10 @@ Use {{packagemanager}} to install {{name}}.
 {{#mentionme}}
 This README.md was bootstrapped with **effe-readme**.
 {{/mentionme}}
+
+{{#licenseDescription.length}}
+# 📃 License
+
+ {{{licenseDescription}}}
+{{/licenseDescription.length}}
 

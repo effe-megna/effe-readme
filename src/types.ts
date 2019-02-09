@@ -4,12 +4,12 @@ export interface EffePackageJson extends PackageJson {
   effe: EffeOptions
 }
 
-interface EffeOptions {
+export interface EffeOptions {
   twitt: string | null,
   emoji: boolean | null,
   tecnhologies: boolean | null,
   howtocontribute: boolean | null,
-  packagemanager: PackageManagerSupported,
+  installfrom: PackageManagerSupported | null,
   mentionme: boolean | null,
   testInstructions: boolean | null
 }

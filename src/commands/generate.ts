@@ -2,47 +2,63 @@ import { Command, flags } from '@oclif/command'
 import * as fs from "fs"
 import * as path from "path"
 import * as Mustache from "mustache"
-import { fetchPackagesJson } from '../utils';
+import cli from 'cli-ux'
+const inquier = require('inquirer')
+import { fetchPackagesJson, writeBasicConfig } from '../utils';
 import { EffePackageJson, PackageManagerSupported } from '../types';
 const pjson = require("../../package.json")
 const emoji = require('emoji-random');
-const writePkg = require('write-pkg');
 
 export default class Generate extends Command {
   static description = 'describe the command here'
 
   static flags = {
-    help: flags.help({ char: 'h' }),
-    // flag with a value (-n, --name=VALUE)
-    name: flags.string({ char: 'n', description: 'name to print' }),
-    // flag with no value (-f, --force)
-    force: flags.boolean({ char: 'f' }),
+    // help: flags.help({ char: 'h' }),
+    // // flag with a value (-n, --name=VALUE)
+    // name: flags.string({ char: 'n', description: 'name to print' }),
+    // // flag with no value (-f, --force)
+    // force: flags.boolean({ char: 'f' }),
+    packageManagerSelected: flags.string({options: ['npm', 'yarn', 'none of these']})
   }
 
   static args = [{ name: 'file' }]
 
   async run() {
-    const pJson = pjson as EffePackageJson
+    const { flags } = this.parse(Generate)
 
+    cli.action.start("effe is generating")
 
-    (async () => {
-      await writePkg({ foo: true });
-      console.log('done');
+    let pJson = pjson as EffePackageJson
 
-      await writePkg(__dirname, { foo: true });
-      console.log('done');
+    if (pJson.effe === undefined) {
+      let packageManagerSelected = flags.packageManagerSelected
 
-      await writePkg(path.join('unicorn', 'package.json'), { foo: true });
-      console.log('done');
-    })();
+      if (!flags.packageManagerSelected) {
+        let responses: any = await inquier.prompt([{
+          name: "packagemanagerSelected",
+          message: `from where people can download ${pJson.name}?`,
+          type: "list",
+          choices: [{ name: "npm" }, { name: "yarn" }, { name: "none of these" }]
+        }])
 
-    const templatePath = path.join(`C:/Users/Francesco/Documents/Open-source/effe-readme/templates`, "basic.md")
+        packageManagerSelected = responses.packagemanagerSelected != "none of these" ?  responses.packagemanagerSelected : null
+      }
+
+      try {
+        pJson = await writeBasicConfig(pJson, packageManagerSelected as PackageManagerSupported)
+      } catch (error) {
+        this.log(error)
+      }
+    }
+
+    const templatePath = path.join(__dirname, "../../templates/basic.md")
 
     let licenseDescription: String | null = null
 
     if (pJson.license === "MIT") {
       try {
-        licenseDescription = fs.readFileSync(`C:/Users/Francesco/Documents/Open-source/effe-readme/licenses/${pJson.license}.txt`, "utf8")
+        const licensesPath = path.join(__dirname, "../../licenses")
+        licenseDescription = fs.readFileSync(`${licensesPath}/${pJson.license}.txt`, "utf8")
         licenseDescription = Mustache.render(licenseDescription.toString(), {
           author: pJson.author
         })
@@ -61,8 +77,8 @@ export default class Generate extends Command {
     }))
     let installationInstructions: string | null = null
 
-    if (pJson.effe && pJson.effe.packagemanager) {
-      switch (pJson.effe.packagemanager) {
+    if (pJson.effe.installfrom) {
+      switch (pJson.effe.installfrom) {
         case PackageManagerSupported.npm:
           installationInstructions = "npm install " + pJson.name
           break;
@@ -72,29 +88,29 @@ export default class Generate extends Command {
           break;
 
         default:
-          installationInstructions = "effe don't know " + pJson.effe.packagemanager
+          installationInstructions = "effe don't know " + pJson.effe.installfrom
           break;
       }
     }
 
     let testInstructionDescription: string | null = null
 
-    if (pJson.scripts && pJson.scripts.test && pJson.effe && pJson.effe.testInstructions) {
+    if (pJson.scripts && pJson.scripts.test && pJson.effe.testInstructions) {
       testInstructionDescription = pJson.scripts.test
     }
 
     const rendered = Mustache.render(fs.readFileSync(templatePath).toString(), {
-      emoji: pJson.effe && pJson.effe.emoji ? randomEmoji : null,
-      mentionme: pJson.effe && pJson.effe.mentionme,
+      emoji: pJson.effe.emoji ? randomEmoji : null,
+      mentionme: pJson.effe.mentionme,
       name: pJson.name,
       description: pJson.description,
       author: pJson.author,
-      twitt: pJson.effe && pJson.effe.twitt ? pJson.effe.twitt : null,
+      twitt: pJson.effe.twitt ? pJson.effe.twitt : null,
       testInstruction: testInstructionDescription,
-      dependencies: pJson.effe && pJson.effe.tecnhologies ? displayableDependencies : [],
+      dependencies: pJson.effe.tecnhologies ? displayableDependencies : [],
       howtocontribute: pJson.effe ? pJson.effe.howtocontribute : false,
       licenseDescription: licenseDescription,
-      packagemanager: pJson.effe && pJson.effe.packagemanager ? pJson.effe.packagemanager : null,
+      packagemanager: pJson.effe.installfrom ? pJson.effe.installfrom : null,
       installationInstructions: installationInstructions
     })
 
@@ -102,7 +118,7 @@ export default class Generate extends Command {
       if (err) {
         this.log(err.message)
       } else {
-        this.log(rendered)
+        cli.action.stop("tada -> C:/Users/Francesco/Documents/Open-source/effe-readme/README.md")
       }
     })
   }
