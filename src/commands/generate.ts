@@ -113,7 +113,8 @@ export default class Generate extends Command {
       installationInstructions: installationInstructions,
       linkedin: pJson.effe.linkedin,
       twitter: pJson.effe.twitter,
-      twitt: pJson.effe.twitt
+      twitt: pJson.effe.twitt,
+      githubrepo: pJson.effe.githubrepo
     })
 
     const readmePath = path.dirname("package.json")
