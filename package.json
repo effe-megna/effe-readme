@@ -73,10 +73,10 @@
     "tecnhologies": true,
     "howtocontribute": true,
     "installfrom": "npm",
-    "testInstructions": true,
+    "testInstructions": false,
     "mentionme": true,
     "linkedin": "https://www.linkedin.com/in/francesco-megna-19a266162",
-    "twitter": "https://twitter.com/FrancescoMegna6",
+    "twitter": "https://twitter.com/effemegna",
     "githubrepo": "https://github.com/effe-megna/effe-readme"
   }
 }

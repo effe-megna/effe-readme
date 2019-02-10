@@ -6,7 +6,7 @@
     <img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"/>
   </a>
 
-:tiger: Bootstrap README.md from package.json
+:traffic_light: Bootstrap README.md from package.json
 
 ## Installation
 
@@ -16,10 +16,9 @@ Use npm to install effe-readme.
 npm install effe-readme
 ```
 
-## How to test
-
+## Usage 
 ```javascript
-nyc --extension .ts mocha --forbid-only "test/**/*.test.ts"
+effe generate
 ```
 
 ## Options
@@ -62,7 +61,8 @@ interface EffeOptions {
 Francesco Megna
 ```
 - [LinkedIn](https://www.linkedin.com/in/francesco-megna-19a266162)
-- [Twitter](https://twitter.com/FrancescoMegna6)
+- [Twitter](https://twitter.com/effemegna)
+
 
 ## 👍 How to Contribute
 1. Fork it
