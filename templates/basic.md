@@ -29,7 +29,7 @@ Use {{packagemanager}} to install {{name}}.
 {{/testInstruction.length}}
 {{#dependencies.length}}
 
-## Technologies
+## 🚀 Technologies
 
 | **Tech** | **Version** | **Description** |
 | -------- | ----------- | --------------- |

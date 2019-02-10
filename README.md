@@ -6,7 +6,7 @@
     <img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"/>
   </a>
 
-:tea: **effe-readme** Generate readme from package.json
+:angel: **effe-readme** Generate readme from package.json
 
 ## Installation
 
@@ -22,7 +22,7 @@ npm install effe-readme
 nyc --extension .ts mocha --forbid-only "test/**/*.test.ts"
 ```
 
-## Technologies
+## 🚀 Technologies
 
 | **Tech** | **Version** | **Description** |
 | -------- | ----------- | --------------- |
