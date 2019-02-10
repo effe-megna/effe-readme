@@ -23,18 +23,20 @@ effe generate
 
 ## Options
 
-```javascript
-interface EffeOptions {
-  twitt: string | null, // add twitter badge on your readme
-  emoji: boolean | null, // random emoji before description
-  tecnhologies: boolean | null, // show table of library used, with name, version and description
-  howtocontribute: boolean | null, // how to contribute instructions
-  installfrom: PackageManagerSupported | null, // npm and yarn supported
-  mentionme: boolean | null, // mention effe-readme at the end of your readme
-  testInstructions: boolean | null, // test instructions based on test script
-  linkedin: string | null, // linkedin account
-  twitter: string | null, // twitter account
-  githubrepo: string | null // github repo of your project
+add "effe" in package.json, a basic config is created on the first generation
+```json
+
+"effe": {
+  "twitt": "a fancy text to twitt", // add twitter badge on your readme
+  "emoji": true,  // random emoji before description
+  "tecnhologies": true, // show table of library used, with name, version and description
+  "howtocontribute": true, // how to contribute instructions
+  "installfrom": "npm", // npm and yarn supported
+  "mentionme": true, // mention effe-readme at the end of your readme
+  "testInstructions": true, // test instructions based on test script
+  "linkedin": "https://www.linkedin.com/in/francesco-megna-19a266162", // linkedin account
+  "twitter": "https://twitter.com/effemegna", // twitter account
+  "githubrepo": "https://github.com/effe-megna/effe-readme" // github repo of your project
 }
 ```
 
