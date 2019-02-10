@@ -2,11 +2,11 @@
 
 [![npm version](https://badge.fury.io/js/effe-readme.svg)](https://www.npmjs.com/package/effe-readme)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
-  <a href="https://twitter.com/intent/tweet?text=Bootstrap README.md from package.json, say goodbye to your sad github account: https://github.com/effe-megna/effe-readme">
+  <a href="https://twitter.com/intent/tweet?text=Bootstrap README.md from package.json, say goodbye to your sad github account.: https://github.com/Francesco Megna/effe-readme">
     <img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"/>
   </a>
 
-✏️ Bootstrap README.md from package.json
+:tea: Bootstrap README.md from package.json
 
 ## Installation
 
@@ -44,6 +44,9 @@ nyc --extension .ts mocha --forbid-only "test/**/*.test.ts"
 ```
 Francesco Megna
 ```
+- [LinkedIn](https://www.linkedin.com/in/francesco-megna-19a266162)
+- [Twitter](https://twitter.com/FrancescoMegna6)
+
 
 ## 👍 How to Contribute
 1. Fork it
@@ -52,7 +55,7 @@ Francesco Megna
 4. Push to the branch (git push origin my-new-feature)
 5. Create new Pull Request
 
-This README.md was bootstrapped with **effe-readme**.
+This README.md was bootstrapped with [effe-readme](https://github.com/effe-megna/effe-readme).
 
 ## 📃 License
 
