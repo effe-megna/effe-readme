@@ -8,6 +8,8 @@
 
 :angel: **effe-readme** Generate readme from package.json
 
+This README.md was bootstrapped with **effe-readme**.
+
 ## Installation
 
 Use npm to install effe-readme.
@@ -51,8 +53,6 @@ Francesco Megna
 3. Commit your changes (git commit -am 'Add some feature')
 4. Push to the branch (git push origin my-new-feature)
 5. Create new Pull Request
-
-This README.md was bootstrapped with **effe-readme**.
 
 # 📃 License
 
