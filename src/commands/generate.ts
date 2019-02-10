@@ -50,10 +50,10 @@ export default class Generate extends Command {
 
     let licenseDescription: String | null = null
 
-    if (pJson.license === "MIT") {
+    if (pJson.license) {
       try {
         const licensesPath = path.join(__dirname, "../../licenses")
-        licenseDescription = fs.readFileSync(`${licensesPath}/${pJson.license}.txt`, "utf8")
+        licenseDescription = fs.readFileSync(`${licensesPath}/${pJson.license.toUpperCase()}.txt`, "utf8")
         licenseDescription = Mustache.render(licenseDescription.toString(), {
           author: pJson.author
         })
@@ -104,6 +104,7 @@ export default class Generate extends Command {
         testInstruction: testInstructionDescription,
         dependencies: pJson.effe.tecnhologies ? displayableDependencies : [],
         howtocontribute: pJson.effe ? pJson.effe.howtocontribute : false,
+        license: pJson.license,
         licenseDescription: licenseDescription,
         packagemanager: pJson.effe.installfrom ? pJson.effe.installfrom : null,
         installationInstructions: installationInstructions,

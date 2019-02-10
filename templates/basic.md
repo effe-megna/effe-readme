@@ -1,7 +1,9 @@
 # {{name}}
 
 [![npm version](https://badge.fury.io/js/{{name}}.svg)](https://www.npmjs.com/package/{{name}})
-[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+{{#license}}
+[![{{{license}}} license](http://img.shields.io/badge/license-{{{license}}}-brightgreen.svg)](http://opensource.org/licenses/{{{license}}})
+{{/license}}
 {{#twitt.length}}
   <a href="https://twitter.com/intent/tweet?text={{twitt}}: {{{githubrepo}}}">
     <img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"/>
