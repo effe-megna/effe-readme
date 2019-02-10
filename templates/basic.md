@@ -3,7 +3,7 @@
 [![npm version](https://badge.fury.io/js/{{name}}.svg)](https://www.npmjs.com/package/{{name}})
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 {{#twitt.length}}
-  <a href="https://twitter.com/intent/tweet?text={{twitt}}: https://github.com/{{author}}//{{name}}">
+  <a href="https://twitter.com/intent/tweet?text={{twitt}}: https://github.com/{{author}}/{{name}}">
     <img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"/>
   </a>
 {{/twitt.length}}
@@ -43,6 +43,11 @@ Use {{packagemanager}} to install {{name}}.
 ```
 {{author}}
 ```
+{{#linkedin.length}}
+- [LinkedIn]({{{linkedin}}})
+- [Twitter]({{{twitter}}})
+{{/linkedin.length}}
+
 {{#howtocontribute}}
 
 ## 👍 How to Contribute
@@ -54,7 +59,7 @@ Use {{packagemanager}} to install {{name}}.
 {{/howtocontribute}}
 
 {{#mentionme}}
-This README.md was bootstrapped with **effe-readme**.
+This README.md was bootstrapped with [effe-readme](https://github.com/effe-megna/effe-readme).
 {{/mentionme}}
 
 {{#licenseDescription.length}}

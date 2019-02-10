@@ -105,18 +105,20 @@ export default class Generate extends Command {
       name: pJson.name,
       description: pJson.description,
       author: pJson.author,
-      twitt: pJson.effe.twitt ? pJson.effe.twitt : null,
       testInstruction: testInstructionDescription,
       dependencies: pJson.effe.tecnhologies ? displayableDependencies : [],
       howtocontribute: pJson.effe ? pJson.effe.howtocontribute : false,
       licenseDescription: licenseDescription,
       packagemanager: pJson.effe.installfrom ? pJson.effe.installfrom : null,
-      installationInstructions: installationInstructions
+      installationInstructions: installationInstructions,
+      linkedin: pJson.effe.linkedin,
+      twitter: pJson.effe.twitter,
+      twitt: pJson.effe.twitt
     })
 
     const readmePath = path.dirname("package.json")
 
-    fs.writeFile(`${readmePath}/README.md`, rendered, err => {
+    fs.writeFile(`${readmePath}/tmp/README.md`, rendered, err => {
       if (err) {
         this.log(err.message)
       } else {

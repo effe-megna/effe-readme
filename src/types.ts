@@ -11,7 +11,9 @@ export interface EffeOptions {
   howtocontribute: boolean | null,
   installfrom: PackageManagerSupported | null,
   mentionme: boolean | null,
-  testInstructions: boolean | null
+  testInstructions: boolean | null,
+  linkedin: string | null,
+  twitter: string | null
 }
 
 export enum PackageManagerSupported {

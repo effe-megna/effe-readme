@@ -24,7 +24,9 @@ export async function writeBasicConfig(
       howtocontribute: true,
       installfrom: packageManagerSelected,
       testInstructions: true,
-      mentionme: true
+      mentionme: true,
+      linkedin: null,
+      twitter: null
     }
 
     const basicConfig: EffePackageJson = {
