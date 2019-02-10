@@ -2,11 +2,11 @@
 
 [![npm version](https://badge.fury.io/js/effe-readme.svg)](https://www.npmjs.com/package/effe-readme)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
-  <a href="https://twitter.com/intent/tweet?text=Bootstrap README.md from package.json, say goodbye to your sad github account.: https://github.com/Francesco Megna/effe-readme">
+  <a href="https://twitter.com/intent/tweet?text=Bootstrap README.md from package.json, say goodbye to your sad github account.: https://github.com/effe-megna/effe-readme">
     <img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"/>
   </a>
 
-:tea: Bootstrap README.md from package.json
+:traffic_light: Bootstrap README.md from package.json
 
 ## Installation
 
@@ -16,10 +16,26 @@ Use npm to install effe-readme.
 npm install effe-readme
 ```
 
-## How to test
+## Usage 
+```javascript
+effe generate
+```
+
+## Options
 
 ```javascript
-nyc --extension .ts mocha --forbid-only "test/**/*.test.ts"
+interface EffeOptions {
+  twitt: string | null, // add twitter badge on your readme
+  emoji: boolean | null, // random emoji before description
+  tecnhologies: boolean | null, // show table of library used, with name, version and description
+  howtocontribute: boolean | null, // how to contribute instructions
+  installfrom: PackageManagerSupported | null, // npm and yarn supported
+  mentionme: boolean | null, // mention effe-readme at the end of your readme
+  testInstructions: boolean | null, // test instructions based on test script
+  linkedin: string | null, // linkedin account
+  twitter: string | null, // twitter account
+  githubrepo: string | null // github repo of your project
+}
 ```
 
 ## 🚀 Technologies
@@ -45,7 +61,7 @@ nyc --extension .ts mocha --forbid-only "test/**/*.test.ts"
 Francesco Megna
 ```
 - [LinkedIn](https://www.linkedin.com/in/francesco-megna-19a266162)
-- [Twitter](https://twitter.com/FrancescoMegna6)
+- [Twitter](https://twitter.com/effemegna)
 
 
 ## 👍 How to Contribute

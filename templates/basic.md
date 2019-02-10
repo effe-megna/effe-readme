@@ -3,7 +3,7 @@
 [![npm version](https://badge.fury.io/js/{{name}}.svg)](https://www.npmjs.com/package/{{name}})
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 {{#twitt.length}}
-  <a href="https://twitter.com/intent/tweet?text={{twitt}}: https://github.com/{{author}}/{{name}}">
+  <a href="https://twitter.com/intent/tweet?text={{twitt}}: {{{githubrepo}}}">
     <img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"/>
   </a>
 {{/twitt.length}}

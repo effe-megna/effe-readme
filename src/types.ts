@@ -13,7 +13,8 @@ export interface EffeOptions {
   mentionme: boolean | null,
   testInstructions: boolean | null,
   linkedin: string | null,
-  twitter: string | null
+  twitter: string | null,
+  githubrepo: string | null
 }
 
 export enum PackageManagerSupported {

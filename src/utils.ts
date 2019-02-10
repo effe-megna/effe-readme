@@ -26,7 +26,8 @@ export async function writeBasicConfig(
       testInstructions: true,
       mentionme: true,
       linkedin: null,
-      twitter: null
+      twitter: null,
+      githubrepo: `https://github.com/${pJson.author}/${pJson.name}`
     }
 
     const basicConfig: EffePackageJson = {

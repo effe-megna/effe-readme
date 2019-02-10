@@ -46,7 +46,6 @@
     "/npm-shrinkwrap.json",
     "/oclif.manifest.json"
   ],
-  "homepage": "https://github.com///effe-readme",
   "keywords": [
     "oclif"
   ],
@@ -59,7 +58,7 @@
       "@oclif/plugin-help"
     ]
   },
-  "repository": "//effe-readme",
+  "repository": "https://github.com/effe-megna/effe-readme",
   "scripts": {
     "postpack": "rimraf oclif.manifest.json",
     "posttest": "tslint -p test -t stylish",
@@ -74,9 +73,10 @@
     "tecnhologies": true,
     "howtocontribute": true,
     "installfrom": "npm",
-    "testInstructions": true,
+    "testInstructions": false,
     "mentionme": true,
     "linkedin": "https://www.linkedin.com/in/francesco-megna-19a266162",
-    "twitter": "https://twitter.com/FrancescoMegna6"
+    "twitter": "https://twitter.com/effemegna",
+    "githubrepo": "https://github.com/effe-megna/effe-readme"
   }
 }
