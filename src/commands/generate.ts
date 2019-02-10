@@ -10,7 +10,7 @@ const pjson = require("../../package.json")
 const emoji = require('emoji-random');
 
 export default class Generate extends Command {
-  static description = 'describe the command here'
+  static description = 'generate README.md from package.json'
 
   static flags = {
     // help: flags.help({ char: 'h' }),
@@ -33,7 +33,7 @@ export default class Generate extends Command {
     if (pJson.effe === undefined) {
       let packageManagerSelected = flags.packageManagerSelected
 
-      if (!flags.packageManagerSelected) {
+      if (!packageManagerSelected) {
         let responses: any = await inquier.prompt([{
           name: "packagemanagerSelected",
           message: `from where people can download ${pJson.name}?`,
@@ -114,11 +114,13 @@ export default class Generate extends Command {
       installationInstructions: installationInstructions
     })
 
-    fs.writeFile("C:/Users/Francesco/Documents/Open-source/effe-readme/README.md", rendered, err => {
+    const readmePath = path.dirname("package.json")
+
+    fs.writeFile(`${readmePath}/README.md`, rendered, err => {
       if (err) {
         this.log(err.message)
       } else {
-        cli.action.stop("tada -> C:/Users/Francesco/Documents/Open-source/effe-readme/README.md")
+        cli.action.stop(`tada -> ${readmePath}/README.md`)
       }
     })
   }

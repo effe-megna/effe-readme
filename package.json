@@ -69,8 +69,8 @@
   },
   "types": "lib/index.d.ts",
   "effe": {
-    "twitt": "Twitt this awesome library",
-    "emoji": false,
+    "twitt": "Generate README.md from package.json, say goodbye to your sad github.",
+    "emoji": true,
     "tecnhologies": true,
     "howtocontribute": true,
     "installfrom": "npm",
