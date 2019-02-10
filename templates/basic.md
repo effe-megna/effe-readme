@@ -8,7 +8,7 @@
   </a>
 {{/twitt.length}}
 
-{{emoji}} **{{name}}** {{description}}
+{{emoji}} {{description}}
 {{#packagemanager}}
 
 ## Installation
