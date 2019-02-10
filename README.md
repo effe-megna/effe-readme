@@ -6,7 +6,7 @@
     <img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"/>
   </a>
 
-:traffic_light: Bootstrap README.md from package.json
+:pencil: Bootstrap README.md from package.json
 
 ## Installation
 
@@ -96,5 +96,3 @@ This README.md was bootstrapped with [effe-readme](https://github.com/effe-megna
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
-
-

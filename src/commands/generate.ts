@@ -18,7 +18,7 @@ export default class Generate extends Command {
     // name: flags.string({ char: 'n', description: 'name to print' }),
     // // flag with no value (-f, --force)
     // force: flags.boolean({ char: 'f' }),
-    packageManagerSelected: flags.string({options: ['npm', 'yarn', 'none of these']})
+    packageManagerSelected: flags.string({ options: ['npm', 'yarn', 'none of these'] })
   }
 
   static args = [{ name: 'file' }]
@@ -41,7 +41,7 @@ export default class Generate extends Command {
           choices: [{ name: "npm" }, { name: "yarn" }, { name: "none of these" }]
         }])
 
-        packageManagerSelected = responses.packagemanagerSelected != "none of these" ?  responses.packagemanagerSelected : null
+        packageManagerSelected = responses.packagemanagerSelected != "none of these" ? responses.packagemanagerSelected : null
       }
 
       try {
@@ -51,13 +51,13 @@ export default class Generate extends Command {
       }
     }
 
-    const templatePath = path.join(__dirname, "../../templates/basic.md")
+    const templatePath = path.join(__dirname, "../templates/basic.md")
 
     let licenseDescription: String | null = null
 
     if (pJson.license === "MIT") {
       try {
-        const licensesPath = path.join(__dirname, "../../licenses")
+        const licensesPath = path.join(__dirname, "../licenses")
         licenseDescription = fs.readFileSync(`${licensesPath}/${pJson.license}.txt`, "utf8")
         licenseDescription = Mustache.render(licenseDescription.toString(), {
           author: pJson.author
@@ -99,32 +99,36 @@ export default class Generate extends Command {
       testInstructionDescription = pJson.scripts.test
     }
 
-    const rendered = Mustache.render(fs.readFileSync(templatePath).toString(), {
-      emoji: pJson.effe.emoji ? randomEmoji : null,
-      mentionme: pJson.effe.mentionme,
-      name: pJson.name,
-      description: pJson.description,
-      author: pJson.author,
-      testInstruction: testInstructionDescription,
-      dependencies: pJson.effe.tecnhologies ? displayableDependencies : [],
-      howtocontribute: pJson.effe ? pJson.effe.howtocontribute : false,
-      licenseDescription: licenseDescription,
-      packagemanager: pJson.effe.installfrom ? pJson.effe.installfrom : null,
-      installationInstructions: installationInstructions,
-      linkedin: pJson.effe.linkedin,
-      twitter: pJson.effe.twitter,
-      twitt: pJson.effe.twitt,
-      githubrepo: pJson.effe.githubrepo
-    })
+    try {
+      const rendered = Mustache.render(fs.readFileSync(templatePath).toString(), {
+        emoji: pJson.effe.emoji ? randomEmoji : null,
+        mentionme: pJson.effe.mentionme,
+        name: pJson.name,
+        description: pJson.description,
+        author: pJson.author,
+        testInstruction: testInstructionDescription,
+        dependencies: pJson.effe.tecnhologies ? displayableDependencies : [],
+        howtocontribute: pJson.effe ? pJson.effe.howtocontribute : false,
+        licenseDescription: licenseDescription,
+        packagemanager: pJson.effe.installfrom ? pJson.effe.installfrom : null,
+        installationInstructions: installationInstructions,
+        linkedin: pJson.effe.linkedin,
+        twitter: pJson.effe.twitter,
+        twitt: pJson.effe.twitt,
+        githubrepo: pJson.effe.githubrepo
+      })
 
-    const readmePath = path.dirname("package.json")
+      const readmePath = path.dirname("package.json")
 
-    fs.writeFile(`${readmePath}/README.md`, rendered, err => {
-      if (err) {
-        this.log(err.message)
-      } else {
-        cli.action.stop(`tada -> ${readmePath}/README.md`)
-      }
-    })
+      fs.writeFile(`${readmePath}/tmp/README.md`, rendered, err => {
+        if (err) {
+          this.log(err.message)
+        } else {
+          cli.action.stop(`tada -> ${readmePath}/README.md`)
+        }
+      })
+    } catch (error) {
+      this.log("Unable to render your new README.md: " + error)
+    }
   }
 }

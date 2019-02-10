@@ -1,7 +1,7 @@
 {
   "name": "effe-readme",
   "description": "Bootstrap README.md from package.json",
-  "version": "1.0.0",
+  "version": "0.9.0",
   "author": "Francesco Megna",
   "bin": {
     "effe": "./bin/run"
@@ -69,7 +69,7 @@
   "types": "lib/index.d.ts",
   "effe": {
     "twitt": "Bootstrap README.md from package.json, say goodbye to your sad github account.",
-    "emoji": true,
+    "emoji": false,
     "tecnhologies": true,
     "howtocontribute": true,
     "installfrom": "npm",
