@@ -45,7 +45,7 @@ Use {{packagemanager}} to install {{name}}.
 ```
 {{#howtocontribute}}
 
-# 👍 How to Contribute
+## 👍 How to Contribute
 1. Fork it
 2. Create your feature branch (git checkout -b my-new-feature)
 3. Commit your changes (git commit -am 'Add some feature')
@@ -58,7 +58,7 @@ This README.md was bootstrapped with **effe-readme**.
 {{/mentionme}}
 
 {{#licenseDescription.length}}
-# 📃 License
+## 📃 License
 
  {{{licenseDescription}}}
 {{/licenseDescription.length}}

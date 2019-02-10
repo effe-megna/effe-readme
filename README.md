@@ -6,7 +6,7 @@
     <img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"/>
   </a>
 
-:confounded: **effe-readme** Bootstrap README.md from package.json
+✏️ Bootstrap README.md from package.json
 
 ## Installation
 
@@ -45,7 +45,7 @@ nyc --extension .ts mocha --forbid-only "test/**/*.test.ts"
 Francesco Megna
 ```
 
-# 👍 How to Contribute
+## 👍 How to Contribute
 1. Fork it
 2. Create your feature branch (git checkout -b my-new-feature)
 3. Commit your changes (git commit -am 'Add some feature')
@@ -54,7 +54,7 @@ Francesco Megna
 
 This README.md was bootstrapped with **effe-readme**.
 
-# 📃 License
+## 📃 License
 
  MIT License
 
