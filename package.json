@@ -69,7 +69,7 @@
   "types": "lib/index.d.ts",
   "effe": {
     "twitt": "Bootstrap README.md from package.json, say goodbye to your sad github account.",
-    "emoji": true,
+    "emoji": false,
     "tecnhologies": true,
     "howtocontribute": true,
     "installfrom": "npm",

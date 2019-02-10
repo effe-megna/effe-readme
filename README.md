@@ -6,7 +6,7 @@
     <img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"/>
   </a>
 
-:traffic_light: Bootstrap README.md from package.json
+:pencil: Bootstrap README.md from package.json
 
 ## Installation
 
