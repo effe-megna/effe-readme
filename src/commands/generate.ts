@@ -13,11 +13,6 @@ export default class Generate extends Command {
   static description = 'generate README.md from package.json'
 
   static flags = {
-    // help: flags.help({ char: 'h' }),
-    // // flag with a value (-n, --name=VALUE)
-    // name: flags.string({ char: 'n', description: 'name to print' }),
-    // // flag with no value (-f, --force)
-    // force: flags.boolean({ char: 'f' }),
     packageManagerSelected: flags.string({ options: ['npm', 'yarn', 'none of these'] })
   }
 
@@ -51,13 +46,13 @@ export default class Generate extends Command {
       }
     }
 
-    const templatePath = path.join(__dirname, "../templates/basic.md")
+    const templatePath = path.join(__dirname, "../../templates/basic.md")
 
     let licenseDescription: String | null = null
 
     if (pJson.license === "MIT") {
       try {
-        const licensesPath = path.join(__dirname, "../licenses")
+        const licensesPath = path.join(__dirname, "../../licenses")
         licenseDescription = fs.readFileSync(`${licensesPath}/${pJson.license}.txt`, "utf8")
         licenseDescription = Mustache.render(licenseDescription.toString(), {
           author: pJson.author
@@ -120,7 +115,7 @@ export default class Generate extends Command {
 
       const readmePath = path.dirname("package.json")
 
-      fs.writeFile(`${readmePath}/README.md`, rendered, err => {
+      fs.writeFile(`${readmePath}/tmp/README.md`, rendered, err => {
         if (err) {
           this.log(err.message)
         } else {
