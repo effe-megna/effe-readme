@@ -2,13 +2,11 @@
 
 [![npm version](https://badge.fury.io/js/effe-readme.svg)](https://www.npmjs.com/package/effe-readme)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
-  <a href="https://twitter.com/intent/tweet?text=Generate README.md from package.json, say goodbye to your sad github.: https://github.com/Francesco Megna//effe-readme">
+  <a href="https://twitter.com/intent/tweet?text=Bootstrap README.md from package.json, say goodbye to your sad github account.: https://github.com/Francesco Megna//effe-readme">
     <img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"/>
   </a>
 
-:angel: **effe-readme** Generate readme from package.json
-
-This README.md was bootstrapped with **effe-readme**.
+:confounded: **effe-readme** Bootstrap README.md from package.json
 
 ## Installation
 
@@ -53,6 +51,8 @@ Francesco Megna
 3. Commit your changes (git commit -am 'Add some feature')
 4. Push to the branch (git push origin my-new-feature)
 5. Create new Pull Request
+
+This README.md was bootstrapped with **effe-readme**.
 
 # 📃 License
 
