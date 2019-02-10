@@ -75,6 +75,8 @@
     "howtocontribute": true,
     "installfrom": "npm",
     "testInstructions": true,
-    "mentionme": true
+    "mentionme": true,
+    "linkedin": "https://www.linkedin.com/in/francesco-megna-19a266162",
+    "twitter": "https://twitter.com/FrancescoMegna6"
   }
 }
