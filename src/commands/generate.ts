@@ -120,7 +120,7 @@ export default class Generate extends Command {
 
       const readmePath = path.dirname("package.json")
 
-      fs.writeFile(`${readmePath}/tmp/README.md`, rendered, err => {
+      fs.writeFile(`${readmePath}/README.md`, rendered, err => {
         if (err) {
           this.log(err.message)
         } else {
