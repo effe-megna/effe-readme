@@ -67,7 +67,6 @@ interface EffeOptions {
 | @types/prompts | 1.2.0 | TypeScript definitions for prompts |
 | cli-ux | 5.1.0 | cli IO utilities |
 | emoji-random | 0.1.2 | Creates a random emoji string. This is as useless as it gets. |
-| inquirer | 6.2.2 | A collection of common interactive command line user interfaces. |
 | mustache | 3.0.1 | Logic-less {{mustache}} templates with JavaScript |
 | package-json | 6.0.0 | Get metadata of a package from the npm registry |
 | prompts | 2.0.2 | Lightweight, beautiful and user-friendly prompts |
