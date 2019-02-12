@@ -1,6 +1,7 @@
 import * as packageJson from "package-json"
 import * as path from "path"
-import { PackageManagerSupported, EffePackageJson, EffeOptions } from './types';
+import { PackageManagerSupported, EffePackageJson, EffeOptions, LicenseSupported } from './types';
+import { MIT, Apache2 } from '../licenses';
 const writePkg = require('write-pkg');
 
 export async function fetchPackagesJson(techNames: Array<string>) {
@@ -43,4 +44,17 @@ export async function writeBasicConfig(
 
     resolve(basicConfig)
   })
+}
+
+export function getLicense(license: LicenseSupported): string | null {
+  switch (license) {
+    case LicenseSupported.MIT:
+      return MIT
+
+    case LicenseSupported.APACHE2:
+      return Apache2
+
+    default:
+      return null
+  }
 }

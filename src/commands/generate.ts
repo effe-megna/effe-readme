@@ -2,10 +2,11 @@ import { Command, flags } from '@oclif/command'
 import * as fs from "fs"
 import * as path from "path"
 import * as Mustache from "mustache"
+import { basicTemplate } from "../../templates/basic"
+import { fetchPackagesJson, writeBasicConfig, getLicense } from '../utils';
+import { EffePackageJson, PackageManagerSupported, LicenseSupported } from '../types';
 import cli from 'cli-ux'
 const inquier = require('inquirer')
-import { fetchPackagesJson, writeBasicConfig } from '../utils';
-import { EffePackageJson, PackageManagerSupported } from '../types';
 const pjson = require("../../package.json")
 const emoji = require('emoji-random');
 
@@ -50,11 +51,9 @@ export default class Generate extends Command {
 
     let licenseDescription: String | null = null
 
-    if (pJson.license) {
+    if (pJson.license && getLicense(pJson.license as LicenseSupported)) {
       try {
-        const licensesPath = path.join(__dirname, "../../licenses")
-        licenseDescription = fs.readFileSync(`${licensesPath}/${pJson.license.toUpperCase()}.txt`, "utf8")
-        licenseDescription = Mustache.render(licenseDescription.toString(), {
+        licenseDescription = Mustache.render(getLicense(pJson.license as LicenseSupported)!, {
           author: pJson.author
         })
       } catch (error) {
@@ -95,7 +94,7 @@ export default class Generate extends Command {
     }
 
     try {
-      const rendered = Mustache.render(fs.readFileSync(templatePath).toString(), {
+      const rendered = Mustache.render(basicTemplate, {
         emoji: pJson.effe.emoji ? randomEmoji : null,
         mentionme: pJson.effe.mentionme,
         name: pJson.name,
