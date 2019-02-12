@@ -2,12 +2,13 @@ import { Command, flags } from '@oclif/command'
 import * as fs from "fs"
 import * as path from "path"
 import * as Mustache from "mustache"
-import { basicTemplate } from "../../templates/basic"
+import { basicTemplate } from "../templates/basic"
 import { fetchPackagesJson, writeBasicConfig, getLicense } from '../utils';
 import { EffePackageJson, PackageManagerSupported, LicenseSupported } from '../types';
 import cli from 'cli-ux'
+import { isNullOrUndefined } from 'util';
+const readPgkUp = require("read-pkg-up")
 const inquier = require('inquirer')
-const pjson = require("../../package.json")
 const emoji = require('emoji-random');
 
 export default class Generate extends Command {
@@ -24,7 +25,19 @@ export default class Generate extends Command {
 
     cli.action.start("effe is generating")
 
-    let pJson = pjson as EffePackageJson
+    let pJson: EffePackageJson | null = null
+
+    try {
+      const res = await readPgkUp()
+      pJson = res.pkg
+    } catch (error) {
+      this.log("Unable to find a package.json")
+    }
+
+    if (isNullOrUndefined(pJson)) {
+      this.log("Unable to find a package.json")
+      return
+    }
 
     if (pJson.effe === undefined) {
       let packageManagerSelected = flags.packageManagerSelected
@@ -47,14 +60,12 @@ export default class Generate extends Command {
       }
     }
 
-    const templatePath = path.join(__dirname, "../../templates/basic.md")
-
     let licenseDescription: String | null = null
 
     if (pJson.license && getLicense(pJson.license as LicenseSupported)) {
       try {
         licenseDescription = Mustache.render(getLicense(pJson.license as LicenseSupported)!, {
-          author: pJson.author
+          author: pJson.author ? pJson.author.name : "Author empty"
         })
       } catch (error) {
 
@@ -99,7 +110,7 @@ export default class Generate extends Command {
         mentionme: pJson.effe.mentionme,
         name: pJson.name,
         description: pJson.description,
-        author: pJson.author,
+        author: pJson.author ? pJson.author.name : "Author empty",
         testInstruction: testInstructionDescription,
         dependencies: pJson.effe.tecnhologies ? displayableDependencies : [],
         howtocontribute: pJson.effe ? pJson.effe.howtocontribute : false,
@@ -115,7 +126,7 @@ export default class Generate extends Command {
 
       const readmePath = path.dirname("package.json")
 
-      fs.writeFile(`${readmePath}/tmp/README.md`, rendered, err => {
+      fs.writeFile(`${readmePath}/README.md`, rendered, err => {
         if (err) {
           this.log(err.message)
         } else {

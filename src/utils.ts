@@ -1,7 +1,7 @@
 import * as packageJson from "package-json"
 import * as path from "path"
 import { PackageManagerSupported, EffePackageJson, EffeOptions, LicenseSupported } from './types';
-import { MIT, Apache2 } from '../licenses';
+import { MIT, Apache2 } from './licenses';
 const writePkg = require('write-pkg');
 
 export async function fetchPackagesJson(techNames: Array<string>) {
