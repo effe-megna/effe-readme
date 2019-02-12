@@ -42,7 +42,7 @@ Use {{packagemanager}} to install {{name}}.
 
 {{/dependencies.length}}
 
-## 🚶 Developed by
+## 🎉 Developed by
 \`\`\`
 {{author}}
 \`\`\`
