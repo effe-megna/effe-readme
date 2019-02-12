@@ -59,19 +59,20 @@ interface EffeOptions {
 
 | **Tech** | **Version** | **Description** |
 | -------- | ----------- | --------------- |
-| @oclif/command | 1.5.8 | oclif base command |
-| @oclif/config | 1.12.4 | base config object and standard interfaces for oclif components |
+| @oclif/command | 1.5.10 | oclif base command |
+| @oclif/config | 1.12.6 | base config object and standard interfaces for oclif components |
 | @oclif/plugin-help | 2.1.6 | standard help for oclif |
 | @types/mustache | 0.8.32 | TypeScript definitions for Mustache |
 | @types/package-json | 5.0.0 | TypeScript definitions for package-json |
+| @types/prompts | 1.2.0 | TypeScript definitions for prompts |
 | cli-ux | 5.1.0 | cli IO utilities |
 | emoji-random | 0.1.2 | Creates a random emoji string. This is as useless as it gets. |
-| inquirer | 6.2.2 | A collection of common interactive command line user interfaces. |
 | mustache | 3.0.1 | Logic-less {{mustache}} templates with JavaScript |
 | package-json | 6.0.0 | Get metadata of a package from the npm registry |
+| prompts | 2.0.2 | Lightweight, beautiful and user-friendly prompts |
+| read-pkg-up | 4.0.0 | Read the closest package.json file |
 | tslib | 1.9.3 | Runtime library for TypeScript helper functions |
 | write-pkg | 3.2.0 | Write a package.json file |
-
 
 ## 🚶 Developed by
 ```

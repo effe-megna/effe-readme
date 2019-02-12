@@ -1,3 +1,4 @@
+export const basicTemplate = `
 # {{name}}
 
 [![npm version](https://badge.fury.io/js/{{name}}.svg)](https://www.npmjs.com/package/{{name}})
@@ -17,17 +18,17 @@
 
 Use {{packagemanager}} to install {{name}}.
 
-```javascript
+\`\`\`javascript
 {{installationInstructions}}
-```
+\`\`\`
 {{/packagemanager}}
 {{#testInstruction.length}}
 
 ## How to test
 
-```javascript
+\`\`\`javascript
 {{{testInstruction}}}
-```
+\`\`\`
 {{/testInstruction.length}}
 {{#dependencies.length}}
 
@@ -41,10 +42,10 @@ Use {{packagemanager}} to install {{name}}.
 
 {{/dependencies.length}}
 
-## 🚶 Developed by
-```
+## 🎉 Developed by
+\`\`\`
 {{author}}
-```
+\`\`\`
 {{#linkedin.length}}
 - [LinkedIn]({{{linkedin}}})
 - [Twitter]({{{twitter}}})
@@ -69,4 +70,4 @@ This README.md was bootstrapped with [effe-readme](https://github.com/effe-megna
 
  {{{licenseDescription}}}
 {{/licenseDescription.length}}
-
+`

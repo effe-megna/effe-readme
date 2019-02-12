@@ -21,3 +21,8 @@ export enum PackageManagerSupported {
   npm = "npm",
   yarn = "yarn"
 }
+
+export enum LicenseSupported {
+  MIT = "MIT",
+  APACHE2 = "APACHE 2.0"
+}

@@ -2,23 +2,20 @@ import { Command, flags } from '@oclif/command'
 import * as fs from "fs"
 import * as path from "path"
 import * as Mustache from "mustache"
+import { basicTemplate } from "../templates/basic"
+import { fetchPackagesJson, writeBasicConfig, getLicense } from '../utils';
+import { EffePackageJson, PackageManagerSupported, LicenseSupported } from '../types';
 import cli from 'cli-ux'
-const inquier = require('inquirer')
-import { fetchPackagesJson, writeBasicConfig } from '../utils';
-import { EffePackageJson, PackageManagerSupported } from '../types';
-const pjson = require("../../package.json")
+import { isNullOrUndefined, error } from 'util';
+import * as propmts from "prompts"
+const readPgkUp = require("read-pkg-up")
 const emoji = require('emoji-random');
 
 export default class Generate extends Command {
   static description = 'generate README.md from package.json'
 
   static flags = {
-    // help: flags.help({ char: 'h' }),
-    // // flag with a value (-n, --name=VALUE)
-    // name: flags.string({ char: 'n', description: 'name to print' }),
-    // // flag with no value (-f, --force)
-    // force: flags.boolean({ char: 'f' }),
-    packageManagerSelected: flags.string({ options: ['npm', 'yarn', 'none of these'] })
+
   }
 
   static args = [{ name: 'file' }]
@@ -28,18 +25,37 @@ export default class Generate extends Command {
 
     cli.action.start("effe is generating")
 
-    let pJson = pjson as EffePackageJson
+    let pJson: EffePackageJson | null = null
+
+    try {
+      const res = await readPgkUp()
+      pJson = res.pkg
+    } catch (error) {
+      throw Error("Unable to find a package.json")
+    }
+
+    if (isNullOrUndefined(pJson)) {
+      throw Error("Unable to find a package.json")
+    }
 
     if (pJson.effe === undefined) {
       let packageManagerSelected = flags.packageManagerSelected
 
+      this.log(JSON.stringify(packageManagerSelected))
+
       if (!packageManagerSelected) {
-        let responses: any = await inquier.prompt([{
+        let responses = await propmts({
           name: "packagemanagerSelected",
           message: `from where people can download ${pJson.name}?`,
           type: "list",
-          choices: [{ name: "npm" }, { name: "yarn" }, { name: "none of these" }]
-        }])
+          choices: [{
+            title: "npm", value: "npm",
+          }, {
+            title: "yarn", value: "yarn",
+          }, {
+            title: "none of these", value: "none of these",
+          }]
+        })
 
         packageManagerSelected = responses.packagemanagerSelected != "none of these" ? responses.packagemanagerSelected : null
       }
@@ -47,24 +63,16 @@ export default class Generate extends Command {
       try {
         pJson = await writeBasicConfig(pJson, packageManagerSelected as PackageManagerSupported)
       } catch (error) {
-        this.log(error)
+        throw Error(error)
       }
     }
 
-    const templatePath = path.join(__dirname, "../templates/basic.md")
-
     let licenseDescription: String | null = null
 
-    if (pJson.license === "MIT") {
-      try {
-        const licensesPath = path.join(__dirname, "../licenses")
-        licenseDescription = fs.readFileSync(`${licensesPath}/${pJson.license}.txt`, "utf8")
-        licenseDescription = Mustache.render(licenseDescription.toString(), {
-          author: pJson.author
-        })
-      } catch (error) {
-
-      }
+    if (pJson.license && getLicense(pJson.license as LicenseSupported)) {
+      licenseDescription = Mustache.render(getLicense(pJson.license as LicenseSupported)!, {
+        author: pJson.author ? pJson.author.name : "Author empty"
+      })
     }
 
     const randomEmoji = emoji.random()
@@ -100,15 +108,16 @@ export default class Generate extends Command {
     }
 
     try {
-      const rendered = Mustache.render(fs.readFileSync(templatePath).toString(), {
+      const rendered = Mustache.render(basicTemplate, {
         emoji: pJson.effe.emoji ? randomEmoji : null,
         mentionme: pJson.effe.mentionme,
         name: pJson.name,
         description: pJson.description,
-        author: pJson.author,
+        author: pJson.author ? pJson.author.name : "Author empty",
         testInstruction: testInstructionDescription,
         dependencies: pJson.effe.tecnhologies ? displayableDependencies : [],
         howtocontribute: pJson.effe ? pJson.effe.howtocontribute : false,
+        license: pJson.license,
         licenseDescription: licenseDescription,
         packagemanager: pJson.effe.installfrom ? pJson.effe.installfrom : null,
         installationInstructions: installationInstructions,
@@ -122,13 +131,13 @@ export default class Generate extends Command {
 
       fs.writeFile(`${readmePath}/README.md`, rendered, err => {
         if (err) {
-          this.log(err.message)
+          throw Error(err.stack)
         } else {
           cli.action.stop(`tada -> ${readmePath}/README.md`)
         }
       })
     } catch (error) {
-      this.log("Unable to render your new README.md: " + error)
+      throw Error("Unable to render your new README.md: " + error)
     }
   }
 }

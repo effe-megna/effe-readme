@@ -1,23 +1,30 @@
 {
   "name": "effe-readme",
   "description": "Bootstrap README.md from package.json",
-  "version": "0.9.0",
-  "author": "Francesco Megna",
+  "version": "0.9.4",
+  "author": {
+    "name": "Francesco Megna"
+  },
   "bin": {
     "effe": "./bin/run"
   },
-  "bugs": "https://github.com///effe-readme/issues",
+  "bugs": {
+    "url": "https://github.com///effe-readme/issues"
+  },
   "dependencies": {
     "@oclif/command": "^1.5.8",
     "@oclif/config": "^1.12.4",
     "@oclif/plugin-help": "^2.1.6",
     "@types/mustache": "^0.8.32",
     "@types/package-json": "^5.0.0",
+    "@types/prompts": "^1.2.0",
     "cli-ux": "^5.1.0",
     "emoji-random": "^0.1.2",
     "inquirer": "^6.2.2",
     "mustache": "^3.0.1",
     "package-json": "^6.0.0",
+    "prompts": "^2.0.2",
+    "read-pkg-up": "^4.0.0",
     "tslib": "^1.9.3",
     "write-pkg": "^3.2.0"
   },
@@ -58,7 +65,10 @@
       "@oclif/plugin-help"
     ]
   },
-  "repository": "https://github.com/effe-megna/effe-readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/effe-megna/effe-readme.git"
+  },
   "scripts": {
     "postpack": "rimraf oclif.manifest.json",
     "posttest": "tslint -p test -t stylish",
@@ -67,16 +77,19 @@
     "version": "oclif-dev readme && git add README.md"
   },
   "types": "lib/index.d.ts",
+  "readme": "ERROR: No README data found!",
+  "homepage": "https://github.com/effe-megna/effe-readme#readme",
+  "_id": "effe-readme@0.9.3",
   "effe": {
-    "twitt": "Bootstrap README.md from package.json, say goodbye to your sad github account.",
+    "twitt": "Twitt this awesome library",
     "emoji": false,
     "tecnhologies": true,
     "howtocontribute": true,
     "installfrom": "npm",
-    "testInstructions": false,
+    "testInstructions": true,
     "mentionme": true,
-    "linkedin": "https://www.linkedin.com/in/francesco-megna-19a266162",
-    "twitter": "https://twitter.com/effemegna",
-    "githubrepo": "https://github.com/effe-megna/effe-readme"
+    "linkedin": null,
+    "twitter": null,
+    "githubrepo": "https://github.com/[object Object]/effe-readme"
   }
 }
