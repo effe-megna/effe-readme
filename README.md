@@ -13,7 +13,7 @@
 Use npm to install effe-readme.
 
 ```javascript
-npm install effe-readme
+npm install -g effe-readme
 ```
 
 ## Usage 
