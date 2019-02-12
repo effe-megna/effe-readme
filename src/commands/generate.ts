@@ -7,15 +7,15 @@ import { fetchPackagesJson, writeBasicConfig, getLicense } from '../utils';
 import { EffePackageJson, PackageManagerSupported, LicenseSupported } from '../types';
 import cli from 'cli-ux'
 import { isNullOrUndefined } from 'util';
+import * as propmts from "prompts"
 const readPgkUp = require("read-pkg-up")
-const inquier = require('inquirer')
 const emoji = require('emoji-random');
 
 export default class Generate extends Command {
   static description = 'generate README.md from package.json'
 
   static flags = {
-    packageManagerSelected: flags.string({ options: ['npm', 'yarn', 'none of these'] })
+
   }
 
   static args = [{ name: 'file' }]
@@ -42,13 +42,21 @@ export default class Generate extends Command {
     if (pJson.effe === undefined) {
       let packageManagerSelected = flags.packageManagerSelected
 
+      this.log(JSON.stringify(packageManagerSelected))
+
       if (!packageManagerSelected) {
-        let responses: any = await inquier.prompt([{
+        let responses = await propmts({
           name: "packagemanagerSelected",
           message: `from where people can download ${pJson.name}?`,
           type: "list",
-          choices: [{ name: "npm" }, { name: "yarn" }, { name: "none of these" }]
-        }])
+          choices: [{
+            title: "npm", value: "npm",
+          }, {
+            title: "yarn", value: "yarn",
+          }, {
+            title: "none of these", value: "none of these",
+          }]
+        })
 
         packageManagerSelected = responses.packagemanagerSelected != "none of these" ? responses.packagemanagerSelected : null
       }
@@ -126,7 +134,7 @@ export default class Generate extends Command {
 
       const readmePath = path.dirname("package.json")
 
-      fs.writeFile(`${readmePath}/README.md`, rendered, err => {
+      fs.writeFile(`${readmePath}/tmp/README.md`, rendered, err => {
         if (err) {
           this.log(err.message)
         } else {
