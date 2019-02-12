@@ -1,7 +1,7 @@
 {
   "name": "effe-readme",
   "description": "Bootstrap README.md from package.json",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "author": {
     "name": "Francesco Megna"
   },

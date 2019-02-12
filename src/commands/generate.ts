@@ -6,7 +6,7 @@ import { basicTemplate } from "../templates/basic"
 import { fetchPackagesJson, writeBasicConfig, getLicense } from '../utils';
 import { EffePackageJson, PackageManagerSupported, LicenseSupported } from '../types';
 import cli from 'cli-ux'
-import { isNullOrUndefined } from 'util';
+import { isNullOrUndefined, error } from 'util';
 import * as propmts from "prompts"
 const readPgkUp = require("read-pkg-up")
 const emoji = require('emoji-random');
@@ -31,12 +31,11 @@ export default class Generate extends Command {
       const res = await readPgkUp()
       pJson = res.pkg
     } catch (error) {
-      this.log("Unable to find a package.json")
+      throw Error("Unable to find a package.json")
     }
 
     if (isNullOrUndefined(pJson)) {
-      this.log("Unable to find a package.json")
-      return
+      throw Error("Unable to find a package.json")
     }
 
     if (pJson.effe === undefined) {
@@ -64,20 +63,16 @@ export default class Generate extends Command {
       try {
         pJson = await writeBasicConfig(pJson, packageManagerSelected as PackageManagerSupported)
       } catch (error) {
-        this.log(error)
+        throw Error(error)
       }
     }
 
     let licenseDescription: String | null = null
 
     if (pJson.license && getLicense(pJson.license as LicenseSupported)) {
-      try {
-        licenseDescription = Mustache.render(getLicense(pJson.license as LicenseSupported)!, {
-          author: pJson.author ? pJson.author.name : "Author empty"
-        })
-      } catch (error) {
-
-      }
+      licenseDescription = Mustache.render(getLicense(pJson.license as LicenseSupported)!, {
+        author: pJson.author ? pJson.author.name : "Author empty"
+      })
     }
 
     const randomEmoji = emoji.random()
@@ -134,15 +129,15 @@ export default class Generate extends Command {
 
       const readmePath = path.dirname("package.json")
 
-      fs.writeFile(`${readmePath}/tmp/README.md`, rendered, err => {
+      fs.writeFile(`${readmePath}/README.md`, rendered, err => {
         if (err) {
-          this.log(err.message)
+          throw Error(err.stack)
         } else {
           cli.action.stop(`tada -> ${readmePath}/README.md`)
         }
       })
     } catch (error) {
-      this.log("Unable to render your new README.md: " + error)
+      throw Error("Unable to render your new README.md: " + error)
     }
   }
 }
