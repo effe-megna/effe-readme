@@ -1,7 +1,7 @@
 {
   "name": "effe-readme",
   "description": "Bootstrap README.md from package.json",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "author": {
     "name": "Francesco Megna"
   },
@@ -79,17 +79,17 @@
   "types": "lib/index.d.ts",
   "readme": "ERROR: No README data found!",
   "homepage": "https://github.com/effe-megna/effe-readme#readme",
-  "_id": "effe-readme@0.9.3",
+  "_id": "effe-readme@0.9.4",
   "effe": {
     "twitt": "Twitt this awesome library",
     "emoji": false,
     "tecnhologies": true,
     "howtocontribute": true,
-    "installfrom": "npm",
+    "installfrom": "yarn",
     "testInstructions": true,
     "mentionme": true,
     "linkedin": null,
     "twitter": null,
-    "githubrepo": "https://github.com/[object Object]/effe-readme"
+    "githubrepo": "https://github.com/Francesco Megna/effe-readme"
   }
 }
