@@ -41,13 +41,11 @@ export default class Generate extends Command {
     if (pJson.effe === undefined) {
       let packageManagerSelected = flags.packageManagerSelected
 
-      this.log(JSON.stringify(packageManagerSelected))
-
       if (!packageManagerSelected) {
         let responses = await propmts({
           name: "packagemanagerSelected",
           message: `from where people can download ${pJson.name}?`,
-          type: "list",
+          type: "select",
           choices: [{
             title: "npm", value: "npm",
           }, {
